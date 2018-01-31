@@ -7,10 +7,17 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.android.serivce.IMyAidlInterface;
+import com.android.serivce.Person;
+
+
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = MainActivity.class.getSimpleName();
 
     private IMyAidlInterface mAidl;
     private ServiceConnection mConnection = new ServiceConnection() {
@@ -33,13 +40,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = new Intent(getApplicationContext(), MyAidlService.class);
+        //本项目其他进程
+//        Intent intent = new Intent(getApplicationContext(), MyAidlService.class);
+//        bindService(intent, mConnection, BIND_AUTO_CREATE);
+        Intent intent = new Intent();
+        intent.setClassName("com.android.serivce", "com.android.serivce.MyAidlService");
         bindService(intent, mConnection, BIND_AUTO_CREATE);
     }
 
     public void OnClick(View view) {
         try {
-            mAidl.addPerson(new Person("Tom", mMinAge++));
+            if (mAidl == null) {
+                Log.e(TAG, "bindService failed");
+                return;
+            }
+            mAidl.addPerson(new Person("hh", mMinAge++));
             String toastString = "There are " + mAidl.getPersonList().size() + " people at present, and the last one is " + mAidl.getPersonList().get(mAidl.getPersonList().size() - 1).getAge() + " .";
             Toast.makeText(MainActivity.this, toastString, Toast.LENGTH_SHORT).show();
         } catch (RemoteException e) {

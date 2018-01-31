@@ -6,3 +6,4 @@ build/
 tatus
 *.apk
 gradle/
+.DS_Store

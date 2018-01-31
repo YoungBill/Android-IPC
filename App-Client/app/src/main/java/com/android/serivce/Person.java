@@ -1,4 +1,4 @@
-package com.android.client;
+package com.android.serivce;
 
 import android.os.Parcel;
 import android.os.Parcelable;

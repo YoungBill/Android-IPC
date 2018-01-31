@@ -1,8 +1,8 @@
 // IMyAidlInterface.aidl
-package com.android.client;
+package com.android.serivce;
 
 // Declare any non-default types here with import statements
-import com.android.client.Person;
+import com.android.serivce.Person;
 
 interface IMyAidlInterface {
     /**
