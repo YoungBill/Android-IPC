@@ -1,0 +1,8 @@
+*.iml
+local.properties
+build/
+.idea/
+.gradle/
+tatus
+*.apk
+gradle/
