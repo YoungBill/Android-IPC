@@ -10,6 +10,9 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 以AIDL的形式进程跨进程通信
+ */
 public class MyAidlService extends Service {
     private final String TAG = this.getClass().getSimpleName();
 

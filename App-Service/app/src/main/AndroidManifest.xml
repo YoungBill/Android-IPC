@@ -22,6 +22,10 @@
             android:name=".MyAidlService"
             android:exported="true" />
 
+        <service
+            android:name=".MessengerService"
+            android:exported="true" />
+
     </application>
 
 </manifest>
