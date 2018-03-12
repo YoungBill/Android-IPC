@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.android.client">
 
+    <permission
+        android:name="com.permission.messengerservice"
+        android:protectionLevel="normal" />
+
+    <uses-permission android:name="com.permission.messengerservice" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"

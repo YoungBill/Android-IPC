@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.android.serivce">
 
+    <permission
+        android:name="com.permission.messengerservice"
+        android:protectionLevel="normal" />
+
+    <uses-permission android:name="com.permission.messengerservice" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -24,7 +30,8 @@
 
         <service
             android:name=".MessengerService"
-            android:exported="true" />
+            android:exported="true"
+            android:permission="com.permission.messengerservice" />
 
     </application>
 

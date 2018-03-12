@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">App-Serivce</string>
+    <string name="description_normal">常规权限描述</string>
+    <string name="label_normal">常规权限标题</string>
 </resources>

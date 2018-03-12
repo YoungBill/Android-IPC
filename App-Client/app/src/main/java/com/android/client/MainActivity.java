@@ -1,6 +1,8 @@
 package com.android.client;
 
+import android.Manifest;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Handler;
@@ -89,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
     public void OnClick(View view) {
         switch (view.getId()) {
             case R.id.addPersonByAIDLBt:
+                int a= MainActivity.this.checkSelfPermission("com.permission.messengerservice");
                 try {
                     if (mAidl == null) {
                         Log.e(TAG, "bindService failed");

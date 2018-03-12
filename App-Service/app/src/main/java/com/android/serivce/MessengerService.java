@@ -2,6 +2,8 @@ package com.android.serivce;
 
 import android.app.Service;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Binder;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
@@ -12,6 +14,8 @@ import android.os.RemoteException;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import static android.os.Binder.getCallingUid;
+
 /**
  * Created by baina on 18-2-1.
  * 以Messenger的形式进程跨进程通信
@@ -20,6 +24,7 @@ import android.util.Log;
 public class MessengerService extends Service {
 
     private static final String TAG = MessengerService.class.getSimpleName();
+//    private static final String PERMISSION_SERVICE = "com.permission.messengerservice";
 
     private Messenger mMessenger = new Messenger(new Handler(Looper.getMainLooper()) {
         @Override
@@ -47,7 +52,12 @@ public class MessengerService extends Service {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        Log.d(TAG, "绑定成功!");
-        return mMessenger.getBinder();
+        int check = checkCallingPermission("com.permission.messengerservice");
+        if (check == PackageManager.PERMISSION_GRANTED) {
+            Log.d(TAG, "绑定成功!");
+            return mMessenger.getBinder();
+        }
+
+        return null;
     }
 }
